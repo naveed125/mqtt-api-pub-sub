@@ -1,0 +1,17 @@
+{
+  "name": "php-client",
+  "version": "1.0.0",
+  "description": "A web API client that uses MQTT pub/sub instead of API polling",
+  "authors": [
+    {
+      "name": "Naveed Khan",
+      "email": "naveed@gmail.com",
+      "role": "Developer",
+      "homepage": "https://www.effective-programmer.com"
+    }
+  ],
+  "require": {
+    "monolog/monolog": "^2.2",
+    "guzzle/guzzle": "^3.9"
+  }
+}

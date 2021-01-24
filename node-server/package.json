@@ -1,0 +1,14 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "A simple node server that maintains a key-value data collection",
+  "author": "Naveed Khan <naveed@gmail.com>",
+  "homepage": "https://www.effective-programmer.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}

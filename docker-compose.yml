@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  mqtt-server:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+
+  node-server:
+    build: node-server
+    ports:
+      - 80:80
+    volumes:
+      - ./node-server:/app
+    depends_on:
+      - mqtt-server
+
+  python-client:
+    build: python-client
+    volumes:
+      - ./python-client:/app
+    depends_on:
+      - mqtt-server
+      - node-server
+
+  php-client:
+    build: php-client
+    volumes:
+      - ./php-client:/app
+    depends_on:
+      - mqtt-server
+      - node-server
