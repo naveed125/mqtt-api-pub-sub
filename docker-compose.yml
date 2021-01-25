@@ -12,23 +12,23 @@ services:
     build: node-server
     ports:
       - 80:80
-    volumes:
-      - ./node-server:/app
     depends_on:
       - mqtt-server
+    volumes:
+      - ./node-server:/app
 
   python-client:
     build: python-client
-    volumes:
-      - ./python-client:/app
     depends_on:
       - mqtt-server
       - node-server
+    volumes:
+      - ./python-client:/app
 
   php-client:
     build: php-client
-    volumes:
-      - ./php-client:/app
     depends_on:
       - mqtt-server
       - node-server
+    volumes:
+      - ./php-client:/app

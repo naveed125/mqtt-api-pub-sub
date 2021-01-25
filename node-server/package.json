@@ -4,11 +4,16 @@
   "description": "A simple node server that maintains a key-value data collection",
   "author": "Naveed Khan <naveed@gmail.com>",
   "homepage": "https://www.effective-programmer.com",
+  "license": "MIT",
+  "repository": "https://github.com/naveed125/mqtt-api-pub-sub",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "monitor": "nodemon server.js"
   },
   "dependencies": {
-    "express": "^4.16.1"
+    "crypto-js": "^4.0.0",
+    "express": "^4.16.1",
+    "mqtt": "^4.2.6"
   }
 }

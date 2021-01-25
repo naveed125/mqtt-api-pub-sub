@@ -3,3 +3,4 @@
 php-client/composer.lock
 php-client/vendor/
 
+node-server/node_modules
