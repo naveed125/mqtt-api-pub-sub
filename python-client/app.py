@@ -31,7 +31,7 @@ def on_message(client, user_data, message):
 
     # See if hash in the message is different from the one we have
     if payload != hash:
-        print("Updating data based on new hash", hash, "...")
+        print("Updating data based on new hash", payload, "...")
         req = requests.get(API_URL)
         if req.status_code == 200:
             data = req.json()["data"]

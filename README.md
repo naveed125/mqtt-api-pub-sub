@@ -20,7 +20,7 @@ To bring everything up just run the following command. I am assuming docker is i
 ```
 
 ## See it in action
-Using the terminal window to send a post request to the web server as shown below.
+Using the terminal window to send a post request to update the data as shown below.
 ```
 % curl -i --request PUT \
     --url http://localhost/key/well/value/awesome \
@@ -39,6 +39,20 @@ Keep-Alive: timeout=5
 
 ```
 Watch to the docker-compose log to see how the clients react to data changes.
+
+```
+node-server_1    | Sending data change event to MQTT topic data/hash with new hash 1df177e307841896b272b48366d18659
+
+python-client_1  | Log:  Received PUBLISH (d0, q0, r0, m0), 'data/hash', ...  (32 bytes)
+python-client_1  | Updating data based on new hash 1df177e307841896b272b48366d18659 ...
+python-client_1  | Current hash 1df177e307841896b272b48366d18659
+python-client_1  | Current data {'well': 'awesome'}
+
+php-client_1     | Received message on topic [data/hash]: 1df177e307841896b272b48366d18659
+php-client_1     | Updating data using http://node-server/data based on new hash: 1df177e307841896b272b48366d18659 ...
+php-client_1     | Current hash: 1df177e307841896b272b48366d18659
+php-client_1     | Current data: {"well":"awesome"}
+```
 
 # I have an issue or question
 If you are running into an issue, or you have a suggestion or question about this project -- well good luck to you, just-kidding. Open an issue using [Issues](https://github.com/naveed125/mqtt-api-pub-sub/issues) page.

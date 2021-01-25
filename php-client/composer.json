@@ -1,5 +1,5 @@
 {
-  "name": "php-client",
+  "name": "naveed125/php-client",
   "version": "1.0.0",
   "description": "A web API client that uses MQTT pub/sub instead of API polling",
   "authors": [
@@ -11,7 +11,7 @@
     }
   ],
   "require": {
-    "monolog/monolog": "^2.2",
-    "guzzle/guzzle": "^3.9"
+    "php-mqtt/client": "^0.3.0",
+    "guzzlehttp/guzzle": "^7.2"
   }
 }
