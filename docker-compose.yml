@@ -24,6 +24,8 @@ services:
       - node-server
     volumes:
       - ./python-client:/app
+    environment:
+      - PYTHONUNBUFFERED=1
 
   php-client:
     build: php-client

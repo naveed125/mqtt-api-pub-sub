@@ -1,8 +1,8 @@
 'use strict';
 
 const express = require('express');
-const crypto = require('crypto');
 const mqtt = require('mqtt');
+const md5 = require('md5');
 
 // Constants
 const PORT = 80;
@@ -11,9 +11,11 @@ const TOPIC = 'data/hash';
 
 // Data
 let data = {};
-let hash = function () {
-    return crypto.createHash('md5').update(data.toString()).digest("hex");
-};
+
+// Helper hash function
+function hash() {
+    return md5(JSON.stringify(data))
+}
 
 // Globals inits
 let app = express();
@@ -23,7 +25,7 @@ let client  = mqtt.connect('mqtt://mqtt-server');
 // Default route
 app.get('/', (req, res) => {
     res.send({
-        "success": true,
+        "success": true
     });
 });
 
@@ -31,7 +33,8 @@ app.get('/', (req, res) => {
 app.get('/data', (req, res) => {
     res.send({
         "success": true,
-        "data": data
+        "data": data,
+        "hash": hash()
     });
 });
 
@@ -41,6 +44,7 @@ app.put('/key/:key/value/:value', (req, res) => {
     if (req.params.key in data && data[req.params.key] === req.params.value){
         return res.send({
             "success": false,
+            "message": "No changes",
             "hash": hash()
         });
     }
@@ -62,7 +66,6 @@ console.log(`Running on http://${HOST}:${PORT}`);
 
 // Start the MQTT connection and post the initial data hash to it
 client.on('connect', function () {
-    let newHash = hash();
-    console.log("Sending hash", newHash, "to topic", TOPIC);
-    client.publish(TOPIC, newHash);
+    console.log("Sending hash", hash(), "to topic", TOPIC);
+    client.publish(TOPIC, hash());
 });
