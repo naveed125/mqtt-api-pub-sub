@@ -1,6 +1,6 @@
 # What is this
 This is a tutorial project about how to use MQTT pub/sub instead of API polling. To read the background and a better explanation of this repository and code, please checkout the medium.com post [here](https://naveed125.medium.com/an-alternative-strategy-to-api-polling-using-pub-sub-and-mqtt-40dc643dcf82).
-Some basic information is included below in case you're not inclined to clicking random links. But I really do recommend reading the linked article.
+Some basic information is included below in case you're not inclined to clicking random links. 
 
 # How does it work
 The basic idea is that the web server maintains a data set and clients get notified when that data changes.
@@ -22,8 +22,7 @@ To bring everything up simple run the following command. I am assuming docker is
 Using the terminal window send a post request to update the data as shown below.
 ```
 % curl -i --request PUT \
-    --url http://localhost/key/well/value/awesome \
-    --header 'Content-Type: application/json'
+    --url http://localhost/key/well/value/awesome 
 
 HTTP/1.1 200 OK
 X-Powered-By: Express
@@ -34,7 +33,7 @@ Date: Mon, 25 Jan 2021 03:57:10 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"success":true,"hash":"1441a7909c087dbbe7ce59881b9df8b9"}
+{"success":true,"hash":"1df177e307841896b272b48366d18659"}
 
 ```
 Watch to the docker-compose log to see how the clients react to data changes.
